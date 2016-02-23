@@ -1,2 +1,14 @@
 <h1>Welcome#index</h1>
 <p>Find me in app/views/welcome/index.html.erb</p>
+
+    <%= form_tag root_path, :id => 'card_form', :class => 'card_form' do %>
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= STRIPE_PUBLIC_KEY %>"
+                data-description="Add new card"
+                data-name="Spripe Test"
+                data-label="Pay"
+                data-image="/assets/fb_small.jpg"
+                data-amount="200"
+                data-panel-label="Add card*">
+        </script>
+    <% end %>

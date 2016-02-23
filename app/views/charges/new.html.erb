@@ -1,0 +1,39 @@
+
+
+<%= form_tag charges_path do %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <label class="amount">
+      <span>Amount: $5.00</span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="A month's subscription"
+          data-amount="500"
+          data-locale="auto"
+          data-label="Pay"
+          data-panel-label="Pay"></script>
+<% end %>
+
+30569309025904
+add_card_charge
+
+
+  <div class="add_card"> 
+    <%= form_tag add_card_charge_path(2), :id => 'card_form', :class => 'card_form' do %>
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                data-description="Add new card"
+                data-name="Fedmitigate"
+                data-label="Add card"
+                data-panel-label="Add card">
+        </script>
+    <% end %>
+  </div>
+</div>
